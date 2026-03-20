@@ -7,7 +7,7 @@
     <groupId>com.andrei1058.spigot.sidebar</groupId>
     <artifactId>sidebar-pom</artifactId>
     <packaging>pom</packaging>
-    <version>23.2.1</version>
+    <version>23.2</version>
 
     <modules>
         <module>sidebar-base</module>
