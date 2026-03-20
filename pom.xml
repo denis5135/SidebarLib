@@ -7,7 +7,7 @@
     <groupId>com.andrei1058.spigot.sidebar</groupId>
     <artifactId>sidebar-pom</artifactId>
     <packaging>pom</packaging>
-    <version>23.2</version>  <!-- Меняем версию на ту, которую ожидает BedWars1058 -->
+    <version>23.2</version>
 
     <modules>
         <module>sidebar-base</module>
@@ -43,7 +43,6 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
-        <!-- CodeMC для дополнительных зависимостей -->
         <repository>
             <id>codemc-snapshots</id>
             <url>https://repo.codemc.io/repository/maven-snapshots/</url>
@@ -82,7 +81,6 @@
         </plugins>
     </build>
 
-    <!-- Публикация в GitHub Packages вместо мёртвого FTP -->
     <distributionManagement>
         <repository>
             <id>github</id>
