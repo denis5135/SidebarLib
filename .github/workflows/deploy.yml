@@ -1,4 +1,4 @@
-name: Build SidebarLib
+name: Build and Publish SidebarLib
 
 on:
   push:
@@ -8,8 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Set up JDK 21
         uses: actions/setup-java@v4
@@ -17,12 +20,17 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       
-      # Просто собираем без всяких API
       - name: Build with Maven
         run: mvn clean install
       
-      # Сохраняем все JAR-файлы
-      - name: Upload JARs
+      # Публикуем в GitHub Packages
+      - name: Publish to GitHub Packages
+        run: mvn deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Сохраняем JAR-файлы как артефакт (на случай, если нужны будут вручную)
+      - name: Upload JARs as artifact
         uses: actions/upload-artifact@v4
         with:
           name: sidebar-libs
